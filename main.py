@@ -104,7 +104,8 @@ if res.errors:
     os.makedirs("errors", exist_ok=True)
     with open(f"errors/{formatted_time}.txt", mode="w") as f:
         pprint(res.errors, depth=2, stream=f)
-else:
+
+if res.data:
     os.makedirs("results", exist_ok=True)
     rows = []
     for x in res.data:
