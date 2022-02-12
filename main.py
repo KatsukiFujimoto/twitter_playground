@@ -102,11 +102,14 @@ JST = timezone(timedelta(hours=+9), "JST")
 formatted_time = datetime.now(JST).strftime("%Y-%m-%d-%H-%M-%S")
 if res.errors:
     os.makedirs("errors", exist_ok=True)
-    with open(f"errors/{formatted_time}.txt", mode="w") as f:
+    filename = f"errors/{formatted_time}.txt"
+    with open(filename, mode="w") as f:
         pprint(res.errors, depth=2, stream=f)
+    print(f"output occured errors to {filename}")
 
 if res.data:
     os.makedirs("results", exist_ok=True)
+    filename = f"results/{formatted_time}.csv"
     rows = []
     for x in res.data:
         rows.append([
@@ -118,4 +121,5 @@ if res.data:
         "tweet_id",
         "content",
         "tweeted_at",
-    ]).to_csv(f"results/{formatted_time}.csv", encoding="utf-8")
+    ]).to_csv(filename, encoding="utf-8")
+    print(f"output fetched tweets to {filename}")
