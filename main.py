@@ -56,6 +56,37 @@ user_fields = [
     "verified",
     "withheld",
 ]
+media_fields = [
+    "duration_ms",
+    "height",
+    "media_key",
+    "preview_image_url",
+    "type",
+    "url",
+    "width",
+    "public_metrics",
+    "non_public_metrics",
+    "organic_metrics",
+    "promoted_metrics",
+    "alt_text",
+]
+place_fields = [
+    "contained_within",
+    "country",
+    "country_code",
+    "full_name",
+    "geo",
+    "id",
+    "name",
+    "place_type",
+]
+poll_fields = [
+    "duration_minutes",
+    "end_datetime",
+    "id",
+    "options",
+    "voting_status",
+]
 client = tweepy.Client(os.environ["BEARER_TOKEN"])
 res = client.search_recent_tweets(
         "cryptocurrency",
@@ -63,6 +94,9 @@ res = client.search_recent_tweets(
         expansions = expansions,
         tweet_fields = tweet_fields,
         user_fields = user_fields,
+        media_fields = media_fields,
+        place_fields = place_fields,
+        poll_fields = poll_fields,
       )
 JST = timezone(timedelta(hours=+9), "JST")
 formatted_time = datetime.now(JST).strftime("%Y-%m-%d-%H-%M-%S")
