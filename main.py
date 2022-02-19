@@ -117,7 +117,7 @@ if res.data:
             x.text,
             x.created_at.astimezone(JST).isoformat(),
         ])
-    data_frame = pandas.DataFrame(rows, columns = [
+    pandas.DataFrame(rows, columns = [
         "tweet_id",
         "content",
         "tweeted_at",
