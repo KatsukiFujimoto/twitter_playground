@@ -2,19 +2,20 @@
 
 ### 事前に必要なもの
 
-- Python
-- pipenv
+- Docker
+- docker-compose
 
 ### 初回起動
 
 ```shell
-$ pipenv install -r requirements.txt
+$ docker-compose build
+$ docker-compose up
 $ echo 'BEARER_TOKEN="your_bearer_token"' > .env
 ```
 
 ### 使い方
 
 ```shell
-$ pipenv shell
+$ docker-compose exec backend bash
 $ python main.py
 ```
