@@ -124,5 +124,5 @@ if res.data:
         "author_id",
         "content",
         "tweeted_at",
-    ]).to_csv(filename, encoding="utf-8")
+    ]).to_csv(filename, encoding="utf_8_sig")
     print(f"output fetched tweets to {filename}")
