@@ -89,7 +89,7 @@ poll_fields = [
 ]
 client = tweepy.Client(os.environ["BEARER_TOKEN"])
 res = client.search_recent_tweets(
-        "cryptocurrency",
+        "#滝沢オススメ記事 from:takigare3",
         max_results = 10,
         expansions = expansions,
         tweet_fields = tweet_fields,
@@ -98,6 +98,7 @@ res = client.search_recent_tweets(
         place_fields = place_fields,
         poll_fields = poll_fields,
       )
+# pdb.set_trace()
 JST = timezone(timedelta(hours=+9), "JST")
 formatted_time = datetime.now(JST).strftime("%Y-%m-%d-%H-%M-%S")
 if res.errors:
@@ -114,11 +115,13 @@ if res.data:
     for x in res.data:
         rows.append([
             x.id,
+            x.author_id,
             x.text,
             x.created_at.astimezone(JST).isoformat(),
         ])
     pandas.DataFrame(rows, columns = [
         "tweet_id",
+        "author_id",
         "content",
         "tweeted_at",
     ]).to_csv(filename, encoding="utf-8")
