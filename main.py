@@ -117,12 +117,20 @@ if res.data:
             x.id,
             x.author_id,
             x.text,
+            x.public_metrics['retweet_count'],
+            x.public_metrics['reply_count'],
+            x.public_metrics['like_count'],
+            x.public_metrics['quote_count'],
             x.created_at.astimezone(JST).isoformat(),
         ])
     pandas.DataFrame(rows, columns = [
         "tweet_id",
         "author_id",
         "content",
+        "retweet_count",
+        "reply_count",
+        "like_count",
+        "quote_count",
         "tweeted_at",
     ]).to_csv(filename, encoding="utf_8_sig")
     print(f"output fetched tweets to {filename}")
