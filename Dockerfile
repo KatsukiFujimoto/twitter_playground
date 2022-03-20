@@ -5,6 +5,6 @@ WORKDIR /app
 
 COPY Pipfile Pipfile.lock ./
 RUN pip install pipenv \
-  && pipenv install --system # pipenvのかそう環境は作らずにコンテナに直接インストール
+  && pipenv install --system # pipenvの仮想環境は作らずにコンテナに直接インストール
 
 COPY . /app
