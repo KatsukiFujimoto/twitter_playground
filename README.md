@@ -44,3 +44,20 @@ $ python main.py
 
 `res` に使うAPI
 - [GET /2/tweets/search/recent](https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent)
+
+### git の使い方
+
+リモートのメインブランチからデータを取得してローカルにマージする。
+
+```sh
+$ git pull origin main
+# origin の main ブランチを pull する
+```
+
+編集したデータをリモートのメインブランチへとプッシュする。
+
+```sh
+$ git push origin main
+# origin の main ブランチを push する
+```
+

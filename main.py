@@ -89,7 +89,7 @@ poll_fields = [
 ]
 client = tweepy.Client(os.environ["BEARER_TOKEN"])
 res = client.search_recent_tweets(
-        "#滝沢オススメ記事 from:takigare3",
+        "#bitconin",
         max_results = 10,
         expansions = expansions,
         tweet_fields = tweet_fields,
