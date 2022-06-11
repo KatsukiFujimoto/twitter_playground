@@ -88,8 +88,9 @@ poll_fields = [
     "voting_status",
 ]
 client = tweepy.Client(os.environ["BEARER_TOKEN"])
+search_words = 'from:elonmusk'
 res = client.search_recent_tweets(
-        "#bitconin",
+        query=search_words,
         max_results = 10,
         expansions = expansions,
         tweet_fields = tweet_fields,
@@ -97,7 +98,7 @@ res = client.search_recent_tweets(
         media_fields = media_fields,
         place_fields = place_fields,
         poll_fields = poll_fields,
-      )
+)
 # pdb.set_trace()
 JST = timezone(timedelta(hours=+9), "JST")
 formatted_time = datetime.now(JST).strftime("%Y-%m-%d-%H-%M-%S")
@@ -107,7 +108,6 @@ if res.errors:
     with open(filename, mode="w") as f:
         pprint(res.errors, depth=2, stream=f)
     print(f"output occured errors to {filename}")
-
 if res.data:
     os.makedirs("results", exist_ok=True)
     filename = f"results/{formatted_time}.csv"
